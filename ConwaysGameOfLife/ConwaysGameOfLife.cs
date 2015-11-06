@@ -29,7 +29,22 @@ namespace ConwaysGameOfLife
 
         public List<List<bool>> ToList()
         {
-            throw new NotImplementedException();
+            int rowLength = this.cells.GetLength(0);
+            Console.WriteLine("rowLength: {0}", rowLength);
+            int colLength = this.cells.GetLength(1);
+            Console.WriteLine("colLength: {0}", colLength);
+
+            List<List<bool>> output = new List<List<bool>>();
+            for (int h = 0; h < rowLength; h++)
+            {
+                List<bool> column = new List<bool>();
+                for (int k = 0; k < colLength; k++)
+                {
+                    column.Add(this.cells[h,k].State);
+                }
+                output.Add(column);
+            }
+            return output;
         }
 
         public void Tick()
