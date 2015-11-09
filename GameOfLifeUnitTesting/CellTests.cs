@@ -35,7 +35,6 @@ namespace GameOfLifeUnitTesting
         public void CalculateAppropriateNeighborCoordinatesForCellAt0x0()
         {
             Cell ATestCell = new Cell(0, 0);
-            PrivateObject ATestCellObj = new PrivateObject(ATestCell);
             List<int[]> TestNeighbors = new List<int[]>();
             TestNeighbors.Add(new int[] { -1, -1 });
             TestNeighbors.Add(new int[] { -1, 0 });

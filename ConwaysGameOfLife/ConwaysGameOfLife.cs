@@ -91,5 +91,21 @@ namespace ConwaysGameOfLife
         {
             throw new NotImplementedException();
         }
+
+        private int[] CountNeighborStates(Cell cell)
+        {
+            List<int[]> neighbors = cell.Neighbors;
+            int count = neighbors.Count;
+            int dead = 0;
+            int alive = 0;
+            foreach (int[] item in neighbors)
+            {
+                if(this.cells[item[0], item[1]].State == true)
+                { alive++; }
+                if (this.cells[item[0], item[1]].State == false)
+                { dead++; }
+            }
+            return new int[] { alive, dead };
+        }
     }
 }

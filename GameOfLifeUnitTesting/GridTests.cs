@@ -136,5 +136,67 @@ namespace GameOfLifeUnitTesting
             CollectionAssert.AreEquivalent(ATestListOfLists[1], ATestGrid.ToList()[1]);
             CollectionAssert.AreEquivalent(ATestListOfLists[2], ATestGrid.ToList()[2]);
         }
+
+        [TestMethod]
+        public void CountNeighborStates1x1Grid()
+        {
+            PrivateObject ATestGrid = new PrivateObject(new GameOfLife(1,1));
+            Cell[,] ATestCellGrid = (Cell[,])ATestGrid.GetField("cells");
+            int[] TestNeighborStates = (int[])ATestGrid.Invoke("CountNeighborStates", new object[] { ATestCellGrid[0,0] });
+            CollectionAssert.AreEqual(new int[] { 0, 0 }, TestNeighborStates);
+        }
+
+        [TestMethod]
+        public void CountNeighborStates3x3Grid()
+        {
+            PrivateObject ATestGrid = new PrivateObject(new GameOfLife(3, 3));
+            Cell[,] ATestCellGrid = (Cell[,])ATestGrid.GetField("cells");
+            int[] TestNeighborStates0x0 = (int[])ATestGrid.Invoke("CountNeighborStates", new object[] { ATestCellGrid[0, 0] });
+            int[] TestNeighborStates0x2 = (int[])ATestGrid.Invoke("CountNeighborStates", new object[] { ATestCellGrid[0, 2] });
+            int[] TestNeighborStates2x0 = (int[])ATestGrid.Invoke("CountNeighborStates", new object[] { ATestCellGrid[2, 0] });
+            int[] TestNeighborStates2x2 = (int[])ATestGrid.Invoke("CountNeighborStates", new object[] { ATestCellGrid[2, 2] });
+            int[] TestNeighborStates1x0 = (int[])ATestGrid.Invoke("CountNeighborStates", new object[] { ATestCellGrid[1, 0] });
+            int[] TestNeighborStates1x2 = (int[])ATestGrid.Invoke("CountNeighborStates", new object[] { ATestCellGrid[1, 2] });
+            int[] TestNeighborStates0x1 = (int[])ATestGrid.Invoke("CountNeighborStates", new object[] { ATestCellGrid[0, 1] });
+            int[] TestNeighborStates2x1 = (int[])ATestGrid.Invoke("CountNeighborStates", new object[] { ATestCellGrid[2, 1] });
+            int[] TestNeighborStates1x1 = (int[])ATestGrid.Invoke("CountNeighborStates", new object[] { ATestCellGrid[1, 1] });
+            CollectionAssert.AreEqual(new int[] { 0, 3 }, TestNeighborStates0x0);
+            CollectionAssert.AreEqual(new int[] { 0, 3 }, TestNeighborStates0x2);
+            CollectionAssert.AreEqual(new int[] { 0, 3 }, TestNeighborStates2x0);
+            CollectionAssert.AreEqual(new int[] { 0, 3 }, TestNeighborStates2x2);
+            CollectionAssert.AreEqual(new int[] { 0, 5 }, TestNeighborStates1x0);
+            CollectionAssert.AreEqual(new int[] { 0, 5 }, TestNeighborStates1x2);
+            CollectionAssert.AreEqual(new int[] { 0, 5 }, TestNeighborStates0x1);
+            CollectionAssert.AreEqual(new int[] { 0, 5 }, TestNeighborStates2x1);
+            CollectionAssert.AreEqual(new int[] { 0, 8 }, TestNeighborStates1x1);
+        }
+
+        [TestMethod]
+        public void CountNeighborStates3x3GridMixOfLiveAndDead()
+        {
+            PrivateObject ATestGrid = new PrivateObject(new GameOfLife(3, 3));
+            Cell[,] ATestCellGrid = (Cell[,])ATestGrid.GetField("cells");
+            ATestCellGrid[0, 0].State = true;
+            ATestCellGrid[1, 1].State = true;
+            ATestCellGrid[2, 2].State = true;
+            int[] TestNeighborStates0x0 = (int[])ATestGrid.Invoke("CountNeighborStates", new object[] { ATestCellGrid[0, 0] });
+            int[] TestNeighborStates0x2 = (int[])ATestGrid.Invoke("CountNeighborStates", new object[] { ATestCellGrid[0, 2] });
+            int[] TestNeighborStates2x0 = (int[])ATestGrid.Invoke("CountNeighborStates", new object[] { ATestCellGrid[2, 0] });
+            int[] TestNeighborStates2x2 = (int[])ATestGrid.Invoke("CountNeighborStates", new object[] { ATestCellGrid[2, 2] });
+            int[] TestNeighborStates1x0 = (int[])ATestGrid.Invoke("CountNeighborStates", new object[] { ATestCellGrid[1, 0] });
+            int[] TestNeighborStates1x2 = (int[])ATestGrid.Invoke("CountNeighborStates", new object[] { ATestCellGrid[1, 2] });
+            int[] TestNeighborStates0x1 = (int[])ATestGrid.Invoke("CountNeighborStates", new object[] { ATestCellGrid[0, 1] });
+            int[] TestNeighborStates2x1 = (int[])ATestGrid.Invoke("CountNeighborStates", new object[] { ATestCellGrid[2, 1] });
+            int[] TestNeighborStates1x1 = (int[])ATestGrid.Invoke("CountNeighborStates", new object[] { ATestCellGrid[1, 1] });
+            CollectionAssert.AreEqual(new int[] { 1, 2 }, TestNeighborStates0x0);
+            CollectionAssert.AreEqual(new int[] { 1, 2 }, TestNeighborStates0x2);
+            CollectionAssert.AreEqual(new int[] { 1, 2 }, TestNeighborStates2x0);
+            CollectionAssert.AreEqual(new int[] { 1, 2 }, TestNeighborStates2x2);
+            CollectionAssert.AreEqual(new int[] { 2, 3 }, TestNeighborStates1x0);
+            CollectionAssert.AreEqual(new int[] { 2, 3 }, TestNeighborStates1x2);
+            CollectionAssert.AreEqual(new int[] { 2, 3 }, TestNeighborStates0x1);
+            CollectionAssert.AreEqual(new int[] { 2, 3 }, TestNeighborStates2x1);
+            CollectionAssert.AreEqual(new int[] { 2, 6 }, TestNeighborStates1x1);
+        }
     }
 }
