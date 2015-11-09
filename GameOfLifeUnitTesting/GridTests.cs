@@ -6,22 +6,8 @@ using System.Collections.Generic;
 namespace GameOfLifeUnitTesting
 {
     [TestClass]
-    public class UnitTests
+    public class GridTests
     {
-        [TestMethod]
-        public void CreateNewCell()
-        {
-            Cell ATestCell = new Cell();
-            Assert.AreEqual(false, ATestCell.State);
-        }
-
-        [TestMethod]
-        public void InitializeCellState()
-        {
-            Cell ATestCell = new Cell();
-            ATestCell.State = true;
-            Assert.AreEqual(true, ATestCell.State);
-        }
 
         [TestMethod]
         [ExpectedException(typeof(IndexOutOfRangeException))]
@@ -60,6 +46,63 @@ namespace GameOfLifeUnitTesting
             GameOfLife ATestGrid = new GameOfLife(5, 5);
             ATestGrid[2, 2] = true;
             Assert.AreEqual(false, ATestGrid[2, 3]);
+        }
+
+        [TestMethod]
+        public void RemoveOffGridNeighborsWithOneCellGrid()
+        {
+            GameOfLife ATestGrid = new GameOfLife(1, 1);
+            Cell TheOnlyCell = ATestGrid.cells[0, 0];
+            Assert.AreEqual(0, TheOnlyCell.neighbors.Count);
+        }
+
+
+        [TestMethod]
+        public void RemoveOffGridNeighborsInnerCell()
+        {
+            GameOfLife ATestGrid = new GameOfLife(5, 5);
+            Cell AnInnerCell = ATestGrid.cells[2, 2];
+            Assert.AreEqual(8, AnInnerCell.neighbors.Count);
+        }
+
+        [TestMethod]
+        public void RemoveOffGridNeighborsWithNegativeCoordinates()
+        {
+            GameOfLife ATestGrid = new GameOfLife(5, 5);
+            Cell ACornerCell = ATestGrid.cells[0, 0];
+            Assert.AreEqual(3, ACornerCell.neighbors.Count);
+        }
+
+        [TestMethod]
+        public void RemoveOffGridNeighborsWithPositiveCoordinates()
+        {
+            GameOfLife ATestGrid = new GameOfLife(5, 5);
+            Cell ACornerCell = ATestGrid.cells[4, 4];
+            Assert.AreEqual(3, ACornerCell.neighbors.Count);
+        }
+
+        [TestMethod]
+        public void RemoveOffGridNeighborsRectangularGridInnerCell()
+        {
+            GameOfLife ATestGrid = new GameOfLife(8, 5);
+            Cell AnInnerCell = ATestGrid.cells[2, 3];
+            Assert.AreEqual(8, AnInnerCell.neighbors.Count);
+        }
+
+        [TestMethod]
+        public void RemoveOffGridNeighborsWithNegativeCoordinatesInRectangularGrid()
+        {
+            GameOfLife ATestGrid = new GameOfLife(8, 5);
+            Cell ACornerCell = ATestGrid.cells[0, 0];
+            Assert.AreEqual(3, ACornerCell.neighbors.Count);
+        }
+
+        [TestMethod]
+        public void RemoveOffGridNeighborsWithPositiveCoordinatesInRectangularGrid()
+        {
+            GameOfLife ATestGrid = new GameOfLife(8, 5);
+            Cell ACornerCell = ATestGrid.cells[7, 4];
+            Assert.AreEqual(3, ACornerCell.neighbors.Count);
         }
 
         [TestMethod]
