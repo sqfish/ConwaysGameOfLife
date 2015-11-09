@@ -40,25 +40,19 @@ namespace ConwaysGameOfLife
             return this;
         }
 
-        public GameOfLife RemoveOffGridNeighbors()
+        private GameOfLife RemoveOffGridNeighbors()
         {
             foreach(Cell cell in this.cells)
             {
-                Console.WriteLine("current cell: {0}, {1}", cell.row, cell.column);
-                Console.WriteLine("starting neighbors: {0}", cell.neighbors.Count);
-                cell.neighbors.RemoveAll(IsOffGridNeighbor);
-                Console.WriteLine("final neighbors: {0}", cell.neighbors.Count);
+                cell.Neighbors.RemoveAll(IsOffGridNeighbor);
             }
             return this;
         }
 
         private bool IsOffGridNeighbor(int[] coordinates)
         {
-            Console.WriteLine("Testing Neighbor {0}", coordinates.ToString());
             int rowCount = this.cells.GetLength(0);
-            Console.WriteLine("rowCount: {0}", rowCount);
             int columnCount = this.cells.GetLength(1);
-            Console.WriteLine("columnCount: {0}", columnCount);
             bool isOffGrid = false;
             if (coordinates.Contains(-1))
             {
@@ -72,7 +66,6 @@ namespace ConwaysGameOfLife
             {
                 isOffGrid = true;
             }
-            Console.WriteLine("isOffGrid {0}", isOffGrid);
             return isOffGrid;
         }
 

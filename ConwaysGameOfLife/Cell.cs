@@ -9,9 +9,9 @@ namespace ConwaysGameOfLife
     public class Cell
     {
         private bool state = false;
-        public int row;
-        public int column;
-        public List<int[]> neighbors;
+        private int row;
+        private int column;
+        private List<int[]> neighbors;
 
         public Cell()
         {
@@ -22,7 +22,7 @@ namespace ConwaysGameOfLife
         {
             row = h;
             column = k;
-            Neighbors();
+            GenerateNeighbors();
         }
 
         public bool State
@@ -36,7 +36,13 @@ namespace ConwaysGameOfLife
             get { return new int[] { row, column }; }
         }
 
-        private void Neighbors()
+        public List<int[]> Neighbors
+        {
+            get { return neighbors; }
+            set { this.neighbors = value; }
+        }
+
+        private void GenerateNeighbors()
         {    
             List<int[]> output = new List<int[]>();
             output.Add(new int[] { row - 1, column - 1 });

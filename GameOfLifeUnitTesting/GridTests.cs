@@ -53,7 +53,7 @@ namespace GameOfLifeUnitTesting
         {
             GameOfLife ATestGrid = new GameOfLife(1, 1);
             Cell TheOnlyCell = ATestGrid.cells[0, 0];
-            Assert.AreEqual(0, TheOnlyCell.neighbors.Count);
+            Assert.AreEqual(0, TheOnlyCell.Neighbors.Count);
         }
 
 
@@ -62,7 +62,7 @@ namespace GameOfLifeUnitTesting
         {
             GameOfLife ATestGrid = new GameOfLife(5, 5);
             Cell AnInnerCell = ATestGrid.cells[2, 2];
-            Assert.AreEqual(8, AnInnerCell.neighbors.Count);
+            Assert.AreEqual(8, AnInnerCell.Neighbors.Count);
         }
 
         [TestMethod]
@@ -70,7 +70,7 @@ namespace GameOfLifeUnitTesting
         {
             GameOfLife ATestGrid = new GameOfLife(5, 5);
             Cell ACornerCell = ATestGrid.cells[0, 0];
-            Assert.AreEqual(3, ACornerCell.neighbors.Count);
+            Assert.AreEqual(3, ACornerCell.Neighbors.Count);
         }
 
         [TestMethod]
@@ -78,7 +78,7 @@ namespace GameOfLifeUnitTesting
         {
             GameOfLife ATestGrid = new GameOfLife(5, 5);
             Cell ACornerCell = ATestGrid.cells[4, 4];
-            Assert.AreEqual(3, ACornerCell.neighbors.Count);
+            Assert.AreEqual(3, ACornerCell.Neighbors.Count);
         }
 
         [TestMethod]
@@ -86,7 +86,7 @@ namespace GameOfLifeUnitTesting
         {
             GameOfLife ATestGrid = new GameOfLife(8, 5);
             Cell AnInnerCell = ATestGrid.cells[2, 3];
-            Assert.AreEqual(8, AnInnerCell.neighbors.Count);
+            Assert.AreEqual(8, AnInnerCell.Neighbors.Count);
         }
 
         [TestMethod]
@@ -94,7 +94,7 @@ namespace GameOfLifeUnitTesting
         {
             GameOfLife ATestGrid = new GameOfLife(8, 5);
             Cell ACornerCell = ATestGrid.cells[0, 0];
-            Assert.AreEqual(3, ACornerCell.neighbors.Count);
+            Assert.AreEqual(3, ACornerCell.Neighbors.Count);
         }
 
         [TestMethod]
@@ -102,7 +102,7 @@ namespace GameOfLifeUnitTesting
         {
             GameOfLife ATestGrid = new GameOfLife(8, 5);
             Cell ACornerCell = ATestGrid.cells[7, 4];
-            Assert.AreEqual(3, ACornerCell.neighbors.Count);
+            Assert.AreEqual(3, ACornerCell.Neighbors.Count);
         }
 
         [TestMethod]
