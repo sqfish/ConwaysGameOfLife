@@ -9,6 +9,7 @@ namespace ConwaysGameOfLife
     public class Cell
     {
         private bool state = false;
+        private bool newState = false;
         private int row;
         private int column;
         private List<int[]> neighbors;
@@ -29,6 +30,12 @@ namespace ConwaysGameOfLife
         {
             get { return state; }
             set { this.state = value; }
+        }
+
+        public bool NewState
+        {
+            get { return newState; }
+            set { this.newState = value; }
         }
 
         public int[] Position

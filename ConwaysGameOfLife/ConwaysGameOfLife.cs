@@ -33,10 +33,12 @@ namespace ConwaysGameOfLife
             int rowCount = this.cells.GetLength(0);
             int columnCount = this.cells.GetLength(1);
 
-            for (int h = 0; h < rowCount; h++)
+            for (int h = 1; h < rowCount-1; h++)
             {
+                this[h, (int)Math.Floor((decimal)columnCount/2)] = true;
                 this[h, 0] = true;
             }
+
             return this;
         }
 
@@ -89,7 +91,37 @@ namespace ConwaysGameOfLife
 
         public void Tick()
         {
-            throw new NotImplementedException();
+            foreach (Cell cell in this.cells)
+            {
+                int[] stateCount = CountNeighborStates(cell);
+                if (cell.State == true)
+                {
+                    if (stateCount[0] < 2)
+                    {
+                        cell.NewState = false;
+                    }
+                    if (stateCount[0] == 2 || stateCount[0] == 3)
+                    {
+                        cell.NewState = true;
+                    }
+                    if (stateCount[0] > 3)
+                    {
+                        cell.NewState = false;
+                    }
+                }
+                if (cell.State == false)
+                {
+                    if (stateCount[0] == 3)
+                    {
+                        cell.NewState = true;
+                    }
+                } 
+            }
+
+            foreach (Cell cell in this.cells)
+            {
+                cell.State = cell.NewState;
+            }
         }
 
         private int[] CountNeighborStates(Cell cell)

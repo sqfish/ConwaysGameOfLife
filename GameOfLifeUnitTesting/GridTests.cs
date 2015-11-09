@@ -140,9 +140,9 @@ namespace GameOfLifeUnitTesting
         [TestMethod]
         public void CountNeighborStates1x1Grid()
         {
-            PrivateObject ATestGrid = new PrivateObject(new GameOfLife(1,1));
+            PrivateObject ATestGrid = new PrivateObject(new GameOfLife(1, 1));
             Cell[,] ATestCellGrid = (Cell[,])ATestGrid.GetField("cells");
-            int[] TestNeighborStates = (int[])ATestGrid.Invoke("CountNeighborStates", new object[] { ATestCellGrid[0,0] });
+            int[] TestNeighborStates = (int[])ATestGrid.Invoke("CountNeighborStates", new object[] { ATestCellGrid[0, 0] });
             CollectionAssert.AreEqual(new int[] { 0, 0 }, TestNeighborStates);
         }
 
