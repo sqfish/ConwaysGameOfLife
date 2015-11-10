@@ -16,7 +16,7 @@ namespace BoardViewer
 
         public MainWindow()
         {
-            currentBoard = new GameOfLife(25, 25).CreateStartPattern();
+            currentBoard = new GameOfLife(25, 25).RandomizeStartPattern();
             dispatcherTimer = new DispatcherTimer();
 
             InitializeComponent();

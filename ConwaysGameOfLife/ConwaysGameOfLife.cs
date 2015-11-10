@@ -28,6 +28,25 @@ namespace ConwaysGameOfLife
             set { cells[i, j].State = value; }
         }
 
+        public GameOfLife RandomizeStartPattern()
+        {
+            int rowCount = this.cells.GetLength(0);
+            int columnCount = this.cells.GetLength(1);
+            Random random = new Random();
+            for (int i = 0; i < rowCount; i++)
+            {
+                for (int j = 0; j < columnCount; j++)
+                {
+                    int tomato = random.Next(2);
+                    if (tomato == 1)
+                    {
+                        cells[i, j].State = true;
+                    }
+                }
+            }
+            return this;
+        }
+
         public GameOfLife CreateStartPattern()
         {
             int rowCount = this.cells.GetLength(0);

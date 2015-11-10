@@ -13,11 +13,11 @@
                 <Rectangle Width="16">
                     <Rectangle.Style>
                         <Style TargetType="Rectangle">
-                            <Setter Property="Fill" Value="LightGreen" />
+                            <Setter Property="Fill" Value="Black" />
                             <Style.Triggers>
                                 <DataTrigger Binding="{Binding}"
                              Value="False">
-                                    <Setter Property="Fill" Value="Pink" />
+                                    <Setter Property="Fill" Value="White" />
                                 </DataTrigger>
                             </Style.Triggers>
                         </Style>
