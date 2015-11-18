@@ -1,6 +1,5 @@
-﻿using System;
+﻿using ConwaysGameOfLife;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ConwaysGameOfLife;
 
 namespace GameOfLifeUnitTesting
 {
@@ -232,4 +231,3 @@ namespace GameOfLifeUnitTesting
         }
     }
 }
-

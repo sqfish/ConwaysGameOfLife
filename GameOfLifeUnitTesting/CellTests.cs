@@ -1,6 +1,5 @@
-﻿using System;
+﻿using ConwaysGameOfLife;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ConwaysGameOfLife;
 using System.Collections.Generic;
 
 namespace GameOfLifeUnitTesting
@@ -58,7 +57,7 @@ namespace GameOfLifeUnitTesting
         [TestMethod]
         public void CalculateAppropriateNeighborCoordinatesForCellAt2x2()
         {
-            Cell ATestCell = new Cell(2,2);
+            Cell ATestCell = new Cell(2, 2);
             PrivateObject ATestCellObj = new PrivateObject(ATestCell);
             List<int[]> TestNeighbors = new List<int[]>();
             TestNeighbors.Add(new int[] { 1, 1 });

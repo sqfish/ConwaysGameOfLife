@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace ConwaysGameOfLife
 {
@@ -16,7 +12,6 @@ namespace ConwaysGameOfLife
 
         public Cell()
         {
-
         }
 
         public Cell(int h, int k)
@@ -26,31 +21,13 @@ namespace ConwaysGameOfLife
             GenerateNeighbors();
         }
 
-        //public bool State
-        //{
-        //    get { return state; }
-        //    set { this.state = value; }
-        //}
-
-        //public bool NewState
-        //{
-        //    get { return newState; }
-        //    set { this.newState = value; }
-        //}
-
         public int[] Position
         {
             get { return new int[] { Row, Column }; }
         }
 
-        //public List<int[]> Neighbors
-        //{
-        //    get { return neighbors; }
-        //    set { this.neighbors = value; }
-        //}
-
         private void GenerateNeighbors()
-        {    
+        {
             List<int[]> output = new List<int[]>();
             output.Add(new int[] { Row - 1, Column - 1 });
             output.Add(new int[] { Row - 1, Column });

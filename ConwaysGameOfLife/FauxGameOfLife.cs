@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace ConwaysGameOfLife
 {
@@ -105,7 +101,7 @@ namespace ConwaysGameOfLife
 
         public void Tick()
         {
-            if(index >= phrase.Length)
+            if (index >= phrase.Length)
             {
                 index = 0;
             }

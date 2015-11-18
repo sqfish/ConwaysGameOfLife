@@ -1,6 +1,6 @@
-﻿using System;
+﻿using ConwaysGameOfLife;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ConwaysGameOfLife;
+using System;
 using System.Collections.Generic;
 
 namespace GameOfLifeUnitTesting
@@ -8,7 +8,6 @@ namespace GameOfLifeUnitTesting
     [TestClass]
     public class GridTests
     {
-
         [TestMethod]
         [ExpectedException(typeof(IndexOutOfRangeException))]
         public void CreateNewEmptyGrid()
@@ -55,7 +54,6 @@ namespace GameOfLifeUnitTesting
             Cell TheOnlyCell = ATestGrid.cells[0, 0];
             Assert.AreEqual(0, TheOnlyCell.Neighbors.Count);
         }
-
 
         [TestMethod]
         public void RemoveOffGridNeighborsInnerCell()

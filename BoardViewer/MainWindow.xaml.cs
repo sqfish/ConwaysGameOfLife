@@ -1,8 +1,7 @@
-﻿using System.Windows;
-using ConwaysGameOfLife;
-using System.Windows.Threading;
+﻿using ConwaysGameOfLife;
 using System;
-using Xceed.Wpf.Toolkit;
+using System.Windows;
+using System.Windows.Threading;
 
 namespace BoardViewer
 {
@@ -16,7 +15,9 @@ namespace BoardViewer
 
         public MainWindow()
         {
-            currentBoard = new GameOfLife(25, 25).RandomizeStartPattern();
+            GameOfLife arrayBoard = new GameOfLife(25, 25);
+            arrayBoard.RandomizeStartPattern();
+            currentBoard = arrayBoard;
             dispatcherTimer = new DispatcherTimer();
 
             InitializeComponent();
